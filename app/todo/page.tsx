@@ -136,6 +136,7 @@ export default function TodoApp() {
 
     // 🐛 Intentional bug: This will cause a null reference error
     const completedTodos = todos.filter((t) => t.completed);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let buggyVariable: any = null;
 
     // This line will crash because we're trying to access .length on null
@@ -143,6 +144,7 @@ export default function TodoApp() {
       // Setting to null intentionally to cause error
       buggyVariable = null;
       // 🐛 This will throw "Cannot read properties of null"
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const crashPoint = buggyVariable.nonExistentProperty.length;
 
       setTodos(todos.filter((t) => !t.completed));
@@ -387,8 +389,8 @@ export default function TodoApp() {
             🐛 Hidden Bug Challenge
           </h3>
           <p className="text-yellow-800 dark:text-yellow-200 text-sm">
-            Try this: Complete at least one task, then click the "Clear
-            Completed" button. The app will crash with an error! Check Sentry to
+            Try this: Complete at least one task, then click the &quot;Clear
+            Completed&quot; button. The app will crash with an error! Check Sentry to
             see the full stack trace and breadcrumb history.
           </p>
         </div>
